@@ -63,7 +63,7 @@ function workFn(my){
 
 
 Cylon.robot({
-	connection: { name: 'sphero', adaptor: 'sphero', port: '/dev/cu.Sphero-RWY-AMP-SPP' },
+	connection: { name: 'sphero', adaptor: 'sphero', port: '/dev/cu.Sphero-OYG-AMP-SPP' },
 	device: {name: 'sphero', driver: 'sphero'},
 	work: workFn
 }).start();
