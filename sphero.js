@@ -136,7 +136,7 @@ stream.on('tweet', countTeam);
 };
 
 Cylon.robot({
-	connection: { name: 'sphero', adaptor: 'sphero', port: '/dev/cu.Sphero-BWG-RN-SPP' },
+	connection: { name: 'sphero', adaptor: 'sphero', port: '/dev/cu.Sphero-WGR-AMP-SPP' },
 	device: {name: 'sphero', driver: 'sphero'},
 	work: spheroWorker
 }).start();
