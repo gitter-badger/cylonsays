@@ -1,6 +1,7 @@
 {
   "name": "sphero",
   "dependencies": {
-    "cylon": "*"
+    "cylon": "*",
+    "cylon-sphero": "*"
   }
 }
