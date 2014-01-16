@@ -47,22 +47,29 @@ function spheroWorker(my){
 	s.setColor('green');
 	s.setBackLED(100);
 
-	function roll(){
+	function roll(team){
 		var dir, speed;
 		redCount = TEAMS['red'];
 		blueCount = TEAMS['blue'];
+		if(team == "red"){
+			dir = 1;
+			speed = redCount - blueCount;
+			s.setColor('red');
+		// }else{
+		}else if(team == "blue"){
+			dir = 181;
+			speed = blueCount - redCount;
+			s.setColor('blue');
+		}else{
+			console.log("Unknown team ", team);
+			return;
+		}
+
 		if( redCount == blueCount ){
 			s.stop();
 			s.setColor('green');
 			return;
-		}else if(redCount > blueCount){
-			dir = 1;
-			speed = redCount - blueCount;
-			s.setColor('red');
-		}else{
-			dir = 181;
-			speed = blueCount - redCount;
-			s.setColor('blue');
+		// }else if(redCount > blueCount){
 		}
 
 		// speed = speed * 20;
@@ -121,12 +128,13 @@ function countTeam(item){
 	    var team = uniq.length && uniq[0];
 	    var count = TEAMS[team];
 	 
+
+	  	console.log('TEAMS', TEAMS);
+
+	  	roll(team);
 	    TEAMS[team] = count + 1;
 	  }
 	 
-	  console.log('TEAMS', TEAMS);
-
-	  roll();
 }
  
 var stream = twitter.stream('statuses/filter', {track:'#ngconfsphero'});
