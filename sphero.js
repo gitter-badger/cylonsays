@@ -1,7 +1,7 @@
 var Cylon = require('cylon');
 
 Cylon.robot({
-  connection: { name: 'sphero', adaptor: 'sphero', port: '/dev/rfcomm0' },
+  connection: { name: 'sphero', adaptor: 'sphero', port: '/dev/tty.Sphero-RGR-AMP-SPP' },
   device: {name: 'sphero', driver: 'sphero'},
 
   work: function(my) {
