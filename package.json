@@ -3,6 +3,8 @@
   "dependencies": {
     "cylon": "*",
     "cylon-sphero": "*",
-    "nodemon": "*"
+    "nodemon": "*",
+      "twit" : "*",
+   "lodash" : "*"
   }
 }
