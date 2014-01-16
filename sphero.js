@@ -1,7 +1,8 @@
 process.stdin.resume();
 process.stdin.setEncoding('utf8');
 var util = require('util');
-var Cylon = require('cylon');
+var Cylon = require('cylon')
+	, MAX_SPEED = 80;
 
 function workFn(my){
   	var s = my.sphero,
@@ -14,19 +15,25 @@ function workFn(my){
 	s.setBackLED(100);
 
 	function roll(){
+		var dir, speed;
 		if( redCount == blueCount ){
 			s.stop();
 			s.setColor('green');
 			return;
 		}else if(redCount > blueCount){
 			dir = 1;
+			speed = redCount - blueCount;
 			s.setColor('red');
 		}else{
 			dir = 181;
+			speed = blueCount - redCount;
 			s.setColor('blue');
 		}
 
-		s.roll(60, dir);
+		speed = speed * 20;
+		if (speed > MAX_SPEED ) speed = MAX_SPEED;
+
+		s.roll(speed, dir);
 		console.log("Moving: ", dir);
 	}
 
@@ -63,7 +70,7 @@ function workFn(my){
 
 
 Cylon.robot({
-	connection: { name: 'sphero', adaptor: 'sphero', port: '/dev/cu.Sphero-OYG-AMP-SPP' },
+	connection: { name: 'sphero', adaptor: 'sphero', port: '/dev/cu.Sphero-BWG-RN-SPP' },
 	device: {name: 'sphero', driver: 'sphero'},
 	work: workFn
 }).start();
