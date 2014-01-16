@@ -31,13 +31,16 @@ Cylon.robot({
 
 	var running = false;
 	process.stdin.on('data', function (text) {
-	console.log('received data:', util.inspect(text));
+		text = util.inspect(text);
+		console.log('received data:', text);
 
-	if( running ){
-		s.stop();
-	}else{
-		s.roll(60, 100);
-	}
+		var direction = text == "r\n" ? 120 : 240;
+
+		if( running ){
+			s.stop();
+		}else{
+			s.roll(60, 120);
+		}
 		running = !running;
 	});
   }
