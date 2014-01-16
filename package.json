@@ -2,6 +2,7 @@
   "name": "sphero",
   "dependencies": {
     "cylon": "*",
-    "cylon-sphero": "*"
+    "cylon-sphero": "*",
+    "nodemon": "*"
   }
 }
