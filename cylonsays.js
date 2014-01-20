@@ -16,12 +16,17 @@ var twitter = new Twit({
   access_token_secret:  APP_SECRET_TOKEN
 });
 
+var hashRegEx = new RegEx('#', 'g'),
+    atRegEx = new RegEx('@', 'g'),
+    cylonRegEx = new RegEx('cylon', 'g');
 
 var sayWat = function(item){
     if (!item.text) return;
     var msg = (item.text+"\n")
-        .replace("#"," hashtag ")
-        .replace("cylon","sighlon ");
+        .replace(hashRegEx, ' hashtag ')
+        .replace(atRegEx, ' at ')
+        .replace(cylonRegEx, ' sighlon ');
+        // 'sighlon' is pronounced the way we expect 'cylon' to be
     
     console.log(msg);
     util.error(msg);
