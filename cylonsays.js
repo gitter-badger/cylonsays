@@ -20,22 +20,23 @@ var twitter = new Twit({
 var sayWat = function(item){
     if (!item.text) return;
     var msg = (item.text+"\n")
-        .replace("#cylonsays"," hashtag sighlon says ")
-        .replace("cylon","signlon");
+        .replace("#"," hashtag ")
+        .replace("cylon","sighlon ");
     
     console.log(msg);
     util.error(msg);
 };
 
-var logStdErr = function(x){
-    util.error(util.inspect(x));    
+var logStdErr = function(z){
+    var zz = z;
+    return function(x) { util.error(zz+" - "+util.inspect(x)); };    
 }
 
 var stream = twitter.stream('statuses/filter', {track:'#cylonsays'});
 stream.on('tweet', sayWat);
 
-stream.on('connect', logStdErr);
-stream.on('disconnect', logStdErr);
-stream.on('reconnect', logStdErr);
-stream.on('limit', logStdErr);
-stream.on('warning', logStdErr);
+stream.on('connect', logStdErr('CONNECT'));
+stream.on('disconnect', logStdErr('DISCONNECT'));
+stream.on('reconnect', logStdErr('RECONNECT'));
+stream.on('limit', logStdErr('LIMIT'));
+stream.on('warning', logStdErr('WARNING'));
