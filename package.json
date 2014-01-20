@@ -1,10 +1,7 @@
 {
-  "name": "sphero",
+  "name": "cylonsays",
+  "version":"0.0.1",
   "dependencies": {
-    "cylon": "*",
-    "cylon-sphero": "*",
-    "nodemon": "*",
-      "twit" : "*",
-   "lodash" : "*"
+      "twit" : "*"
   }
 }
